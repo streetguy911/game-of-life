@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Conway's Game of Life</title>
+</head>
+<body class="clearfix">
+    <canvas id="canvas" class="canvas"></canvas>
+    <div id="settings" class="sidebar">
+        <div>
+            <button id="start" v-on:click="start">Start</button>
+            <button id="pause" v-on:click="pause">Pause</button>
+            <button id="stop" v-on:click="stop">Stop</button>
+        </div>
+        <div>
+            <label for="speed">Speed</label>
+            <input type="range" id="speed" v-model="speed" v-on:change="setNextGenerationTimeout" min="10" max="1000" step="10">
+            <span>{{ speed }}</span>
+        </div>
+        <div>
+            <label>Zoom</label>
+            <button v-on:click="zoomOut">-</button>
+            <button v-on:click="zoomIn">+</button>
+            <button v-on:click="zoomReset">Reset</button>
+        </div>
+        <div class="move-container">
+            <div>
+                <button v-on:click="moveUp">&#8593;</button>
+            </div>
+            <div>
+                <button v-on:click="moveLeft">&#8592;</button>
+                <span>move canvas</span>
+                <button v-on:click="moveRight">&#8594;</button>
+            </div>
+            <div>
+                <button v-on:click="moveDown">&#8595;</button>
+            </div>
+        </div>
+        <div>
+            <label for="pattern">Insert pattern URL: </label>
+            <textarea
+                    class="wide"
+                    id="pattern"
+            >
+.....**......**....
+....*.*......*.*...
+....*..........*...
+.**.*..........*.**
+.**.*.*..**..*.*.**
+....*.*.*..*.*.*...
+....*.*.*..*.*.*...
+.**.*.*..**..*.*.**
+.**.*..........*.**
+....*..........*...
+....*.*......*.*...
+.....**......**....
+            </textarea>
+            <button v-on:click="applyPattern">Apply Pattern</button>
+
+        </div>
+    </div>
+    <script src="/public/js/scripts.js"></script>
+</body>
+</html>
